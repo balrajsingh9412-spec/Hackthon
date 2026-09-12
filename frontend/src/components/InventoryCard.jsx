@@ -5,7 +5,7 @@ const RARITY_BORDER = {
   Common: 'border-slate-500/40',
   Uncommon: 'border-emerald-500/40',
   Rare: 'border-blue-500/40 shadow-glow-blue',
-  Epic: 'border-purple-500/40 shadow-glow-purple',
+  Epic: 'border-purple-500/40 shadow-glow-gold',
   Legendary: 'border-amber-500/50 glow-border-gold'
 };
 
@@ -42,7 +42,7 @@ const InventoryCard = ({ item, onEquip, isEquipping = false }) => {
         </div>
 
         {item.itemEffect && (
-          <p className="text-[11px] text-center text-rpg-purple font-semibold mt-1">
+          <p className="text-[11px] text-center text-emerald-500 font-semibold mt-1">
             {item.itemEffect}
           </p>
         )}
@@ -55,7 +55,7 @@ const InventoryCard = ({ item, onEquip, isEquipping = false }) => {
           className={`w-full py-1.5 rounded-xl font-fantasy font-bold text-xs transition-all ${
             item.equipped
               ? 'bg-[#111525] border border-rpg-border text-rpg-muted hover:text-white'
-              : 'bg-rpg-purple/20 border border-rpg-purple/40 text-rpg-purple hover:bg-rpg-purple hover:text-white'
+              : 'bg-emerald-500/20 border border-emerald-500/40 text-emerald-500 hover:bg-emerald-500 hover:text-white'
           }`}
         >
           {isEquipping ? 'Updating...' : item.equipped ? 'Unequip' : 'Equip Item'}

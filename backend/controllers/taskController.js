@@ -141,21 +141,23 @@ const deleteTask = async (req, res, next) => {
 // @access  Private
 const completeTask = async (req, res, next) => {
   try {
-    const task = await Task.findOne({ _id: req.params.id, userId: req.user._id });
-    if (!task) {
-      res.status(404);
-      throw new Error('Quest not found or access denied');
-    }
+    // Atomically find & mark task complete to eliminate duplicate completion race conditions!
+    const task = await Task.findOneAndUpdate(
+      { _id: req.params.id, userId: req.user._id, completed: false },
+      { $set: { completed: true, completedAt: new Date() } },
+      { new: true }
+    );
 
-    if (task.completed) {
+    if (!task) {
+      // Check if task exists to differentiate 404 vs 400
+      const existingTask = await Task.findOne({ _id: req.params.id, userId: req.user._id });
+      if (!existingTask) {
+        res.status(404);
+        throw new Error('Quest not found or access denied');
+      }
       res.status(400);
       throw new Error('This quest has already been completed!');
     }
-
-    // Mark task complete
-    task.completed = true;
-    task.completedAt = new Date();
-    await task.save();
 
     // Fetch user
     const user = await User.findById(req.user._id);
@@ -166,11 +168,12 @@ const completeTask = async (req, res, next) => {
     const statReward = task.statReward || 4;
     const targetAttribute = task.category || 'intellect';
 
-    // Update level & XP
+    // Update level, XP & Energy
     const progResult = calculateProgression(user.level, user.xp, xpReward);
     user.level = progResult.newLevel;
     user.xp = progResult.newXP;
     user.gold += goldReward;
+    user.energy = Math.min(100, (user.energy || 85) + 10); // +10 Energy boost on quest complete
 
     // Update attribute stat
     if (user.attributes[targetAttribute] !== undefined) {
@@ -196,7 +199,7 @@ const completeTask = async (req, res, next) => {
       xpAmount: xpReward,
       goldAmount: goldReward,
       taskId: task._id,
-      description: `Completed Quest: "${task.title}" (+${xpReward} XP, +${goldReward} Gold, +${statReward} ${targetAttribute.toUpperCase()})`
+      description: `Completed Growth Goal: "${task.title}" (+${xpReward} XP, +${goldReward} Gold, +${statReward} ${targetAttribute.toUpperCase()})`
     });
 
     const userObj = user.toObject();

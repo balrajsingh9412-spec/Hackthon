@@ -12,6 +12,7 @@ import Character from './pages/Character';
 import Shop from './pages/Shop';
 import Inventory from './pages/Inventory';
 import Profile from './pages/Profile';
+
 import LoadingSkeleton from './components/LoadingSkeleton';
 
 const ProtectedLayout = ({ children }) => {
@@ -22,7 +23,7 @@ const ProtectedLayout = ({ children }) => {
     return (
       <div className="min-h-screen bg-[#090B14] flex flex-col items-center justify-center p-6 text-center">
         <div className="text-4xl mb-4 animate-bounce">⚔️</div>
-        <p className="font-fantasy font-bold text-rpg-purple text-sm">
+        <p className="font-fantasy font-bold text-emerald-500 text-sm">
           ENTERING LIFEQUEST REALM...
         </p>
       </div>
@@ -86,6 +87,7 @@ const AppContent = () => {
           </ProtectedLayout>
         }
       />
+
       <Route
         path="/quests"
         element={

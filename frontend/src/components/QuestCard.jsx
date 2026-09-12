@@ -14,7 +14,7 @@ const DIFFICULTY_STYLES = {
   easy: { label: 'Easy', border: 'border-emerald-500/40', badge: 'bg-emerald-500/20 text-emerald-300' },
   medium: { label: 'Medium', border: 'border-blue-500/40', badge: 'bg-blue-500/20 text-blue-300' },
   hard: { label: 'Hard', border: 'border-amber-500/40', badge: 'bg-amber-500/20 text-amber-300' },
-  epic: { label: 'Epic', border: 'border-purple-500/40', badge: 'bg-purple-500/20 text-purple-300 shadow-glow-purple' }
+  epic: { label: 'Epic', border: 'border-purple-500/40', badge: 'bg-purple-500/20 text-purple-300 shadow-glow-gold' }
 };
 
 const QuestCard = ({ task, onComplete, onEdit, onDelete, isCompleting = false }) => {
@@ -101,7 +101,7 @@ const QuestCard = ({ task, onComplete, onEdit, onDelete, isCompleting = false })
           <button
             onClick={() => onComplete(task._id)}
             disabled={isCompleting}
-            className="px-4 py-2 rounded-xl bg-gradient-to-r from-rpg-purple to-indigo-600 hover:from-purple-600 hover:to-indigo-700 text-white font-fantasy font-bold text-xs shadow-glow-purple transition-all duration-200 active:scale-95 disabled:opacity-50 flex items-center gap-1.5"
+            className="px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white font-fantasy font-bold text-xs shadow-glow-gold transition-all duration-200 active:scale-95 disabled:opacity-50 flex items-center gap-1.5"
           >
             {isCompleting ? (
               <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>

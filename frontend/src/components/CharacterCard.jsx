@@ -7,20 +7,20 @@ const CharacterCard = ({ user }) => {
   if (!user) return null;
 
   return (
-    <div className="rpg-panel p-6 rounded-2xl border border-rpg-purple/40 relative overflow-hidden bg-gradient-to-br from-[#151A2D] via-[#111525] to-[#161226]">
+    <div className="rpg-panel p-6 rounded-2xl border border-emerald-500/40 relative overflow-hidden bg-gradient-to-br from-[#151A2D] via-[#111525] to-[#161226]">
       {/* Background glowing orb effect */}
-      <div className="absolute -top-12 -right-12 w-40 h-40 bg-rpg-purple/20 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute -top-12 -right-12 w-40 h-40 bg-emerald-500/20 rounded-full blur-3xl pointer-events-none"></div>
 
       <div className="flex flex-col md:flex-row items-center gap-6">
         {/* Avatar Graphic */}
         <div className="relative group">
-          <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-rpg-purple via-rpg-blue to-indigo-900 p-1 shadow-glow-purple">
+          <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-emerald-500 via-rpg-blue to-indigo-900 p-1 shadow-glow-gold">
             <div className="w-full h-full bg-[#090B14] rounded-xl flex items-center justify-center text-4xl relative overflow-hidden">
               <span className="transform transition-transform group-hover:scale-110 duration-300">🧙</span>
-              <div className="absolute inset-0 bg-gradient-to-t from-rpg-purple/30 to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-emerald-500/30 to-transparent"></div>
             </div>
           </div>
-          <div className="absolute -bottom-2 -right-2 bg-rpg-purple text-white text-xs font-fantasy font-bold px-2 py-0.5 rounded-md border border-purple-300 shadow-md">
+          <div className="absolute -bottom-2 -right-2 bg-emerald-500 text-white text-xs font-fantasy font-bold px-2 py-0.5 rounded-md border border-purple-300 shadow-md">
             Lv. {user.level || 1}
           </div>
         </div>
@@ -33,7 +33,7 @@ const CharacterCard = ({ user }) => {
                 {user.name}
                 <Sparkles className="w-4 h-4 text-rpg-gold animate-pulse" />
               </h2>
-              <p className="text-xs font-semibold text-rpg-purple tracking-wider uppercase flex items-center justify-center md:justify-start gap-1">
+              <p className="text-xs font-semibold text-emerald-500 tracking-wider uppercase flex items-center justify-center md:justify-start gap-1">
                 <Shield className="w-3.5 h-3.5" />
                 {user.title || 'Apprentice Wanderer'}
               </p>

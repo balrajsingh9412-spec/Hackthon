@@ -54,4 +54,7 @@ const taskSchema = new mongoose.Schema(
   }
 );
 
+taskSchema.index({ userId: 1, completed: 1 });
+taskSchema.index({ createdAt: -1 });
+
 module.exports = mongoose.model('Task', taskSchema);

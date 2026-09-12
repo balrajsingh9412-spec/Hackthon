@@ -22,12 +22,10 @@ const inventorySchema = new mongoose.Schema(
     },
     itemType: {
       type: String,
-      enum: ['shield', 'weapon', 'crown', 'theme', 'badge', 'avatar', 'potion'],
       default: 'badge'
     },
     itemRarity: {
       type: String,
-      enum: ['Common', 'Uncommon', 'Rare', 'Epic', 'Legendary'],
       default: 'Common'
     },
     itemIcon: {

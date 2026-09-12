@@ -37,11 +37,37 @@ const toggleEquipItem = async (req, res, next) => {
       item.equipped = false;
     }
 
-    await item.save();
+    const User = require('../models/User');
+    const user = await User.findById(req.user._id);
+    const cat = item.itemType || 'armor';
+
+    if (item.equipped) {
+      if (!user.equippedItems) user.equippedItems = {};
+      user.equippedItems[cat] = {
+        id: item.itemId,
+        name: item.itemName,
+        category: cat,
+        material: item.itemMaterial || 'iron',
+        rarity: item.itemRarity
+      };
+    } else {
+      if (user.equippedItems && user.equippedItems[cat]) {
+        user.equippedItems[cat] = null;
+      }
+    }
+
+    user.markModified('equippedItems');
+    await user.save();
+
+    const userObj = user.toObject();
+    delete userObj.password;
 
     return res.json({
       success: true,
-      data: item
+      data: {
+        item,
+        user: userObj
+      }
     });
   } catch (error) {
     next(error);

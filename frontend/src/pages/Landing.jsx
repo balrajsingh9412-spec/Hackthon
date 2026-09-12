@@ -7,15 +7,15 @@ const Landing = () => {
   return (
     <div className="min-h-screen bg-[#090B14] text-[#F8FAFC] flex flex-col justify-between relative overflow-hidden">
       {/* Background Radial Ambient Glows */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-rpg-purple/15 rounded-full blur-[140px] pointer-events-none"></div>
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-emerald-500/15 rounded-full blur-[140px] pointer-events-none"></div>
       <div className="absolute top-1/3 right-0 w-[400px] h-[400px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none"></div>
 
       {/* Landing Navigation Header */}
       <header className="max-w-7xl mx-auto w-full px-6 py-6 flex items-center justify-between z-10">
         <div className="flex items-center gap-2">
-          <span className="text-3xl">⚔️</span>
+          <span className="text-3xl">🌿</span>
           <span className="font-fantasy font-extrabold text-2xl tracking-wider gold-text">
-            LIFEQUEST
+            LIFEQUEST <span className="text-xs text-emerald-400 font-sans font-semibold">ECO RPG</span>
           </span>
         </div>
 
@@ -28,9 +28,9 @@ const Landing = () => {
           </Link>
           <Link
             to="/register"
-            className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-rpg-purple to-indigo-600 hover:from-purple-600 hover:to-indigo-700 font-fantasy font-bold text-xs shadow-glow-purple transition active:scale-95"
+            className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 font-fantasy font-bold text-xs shadow-glow-gold transition active:scale-95 text-white"
           >
-            Enter Realm ⚔
+            Enter Sanctuary 🌿
           </Link>
         </div>
       </header>
@@ -41,10 +41,10 @@ const Landing = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-rpg-purple/10 border border-rpg-purple/30 text-rpg-purple text-xs font-fantasy font-bold mb-6 shadow-glow-purple"
+          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs font-fantasy font-bold mb-6 shadow-glow-gold"
         >
           <Sparkles className="w-4 h-4 text-rpg-gold" />
-          <span>GAMIFIED PRODUCTIVITY FOR HEROES & ADVENTURERS</span>
+          <span>GAMIFIED PRODUCTIVITY & LIVING LIFE TREE SANCTUARY</span>
         </motion.div>
 
         <motion.h1
@@ -53,17 +53,16 @@ const Landing = () => {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="font-fantasy font-extrabold text-4xl sm:text-6xl lg:text-7xl tracking-tight max-w-4xl leading-tight mb-6"
         >
-          TURN YOUR REAL LIFE INTO AN <span className="gold-text">ADVENTURE</span>.
+          NURTURE YOUR LIVING <span className="gold-text">LIFE TREE WORLD</span>.
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-base sm:text-lg text-rpg-muted max-w-2xl mx-auto mb-10 leading-relaxed"
+          className="text-sm md:text-lg text-rpg-muted max-w-2xl mb-8 leading-relaxed font-sans"
         >
-          Convert workouts, coding projects, studying, and daily habits into RPG quests.
-          Earn XP, accumulate Gold, level up your character attributes, and unlock legendary items.
+          Complete real-world goals. Earn XP & Gold. Nurture your magical Life Tree from a young sapling into an ancient legendary tree. Adopt companion animals and build a thriving peaceful sanctuary.
         </motion.p>
 
         <motion.div
@@ -74,7 +73,7 @@ const Landing = () => {
         >
           <Link
             to="/register"
-            className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-rpg-purple via-indigo-600 to-rpg-blue hover:from-purple-600 hover:to-blue-600 text-white font-fantasy font-extrabold text-sm shadow-glow-purple transition active:scale-95 flex items-center justify-center gap-2"
+            className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-emerald-500 via-teal-600 to-rpg-blue hover:from-emerald-400 hover:to-blue-600 text-white font-fantasy font-extrabold text-sm shadow-glow-gold transition active:scale-95 flex items-center justify-center gap-2"
           >
             START YOUR ADVENTURE <ArrowRight className="w-4 h-4" />
           </Link>
@@ -93,7 +92,7 @@ const Landing = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="mt-20 max-w-4xl w-full grid grid-cols-1 md:grid-cols-3 gap-6 text-left"
         >
-          <div className="rpg-panel p-6 rounded-2xl border border-rpg-purple/30">
+          <div className="rpg-panel p-6 rounded-2xl border border-emerald-500/30">
             <div className="w-10 h-10 rounded-xl bg-blue-500/20 text-rpg-blue flex items-center justify-center mb-4">
               <Swords className="w-5 h-5" />
             </div>

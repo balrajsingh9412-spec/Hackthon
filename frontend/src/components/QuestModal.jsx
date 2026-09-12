@@ -51,13 +51,13 @@ const QuestModal = ({ isOpen, onClose, onSubmit, initialTask = null, isSubmittin
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.95 }}
-          className="rpg-panel w-full max-w-lg p-6 rounded-2xl border border-rpg-purple/50 shadow-glow-purple relative overflow-hidden"
+          className="rpg-panel w-full max-w-lg p-6 rounded-2xl border border-emerald-500/50 shadow-glow-gold relative overflow-hidden"
         >
           {/* Header */}
           <div className="flex items-center justify-between pb-4 mb-4 border-b border-rpg-border">
             <h2 className="font-fantasy font-extrabold text-xl text-rpg-text flex items-center gap-2">
-              <Sparkles className="w-5 h-5 text-rpg-purple" />
-              {initialTask ? 'Edit Quest Details' : 'Forge New Quest'}
+              <Sparkles className="w-5 h-5 text-emerald-400" />
+              {initialTask ? 'Edit Growth Seed Details' : '🌱 Sow New Growth Seed'}
             </h2>
             <button
               onClick={onClose}
@@ -70,15 +70,15 @@ const QuestModal = ({ isOpen, onClose, onSubmit, initialTask = null, isSubmittin
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label className="block text-xs font-semibold text-rpg-muted uppercase tracking-wider mb-1.5">
-                Quest Title *
+                Seed / Goal Title *
               </label>
               <input
                 type="text"
                 required
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                placeholder="e.g. Complete React Auth Component, Run 5km..."
-                className="w-full px-4 py-2.5 rounded-xl bg-[#111525] border border-rpg-border focus:border-rpg-purple focus:outline-none text-rpg-text text-sm"
+                placeholder="e.g. Morning 20-min Meditation, Complete Coding Task, Read 10 Pages..."
+                className="w-full px-4 py-2.5 rounded-xl bg-[#111525] border border-rpg-border focus:border-emerald-500 focus:outline-none text-rpg-text text-sm"
               />
             </div>
 
@@ -91,41 +91,41 @@ const QuestModal = ({ isOpen, onClose, onSubmit, initialTask = null, isSubmittin
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 placeholder="Describe objective details, milestones, or notes..."
-                className="w-full px-4 py-2.5 rounded-xl bg-[#111525] border border-rpg-border focus:border-rpg-purple focus:outline-none text-rpg-text text-sm resize-none"
+                className="w-full px-4 py-2.5 rounded-xl bg-[#111525] border border-rpg-border focus:border-emerald-500 focus:outline-none text-rpg-text text-sm resize-none"
               />
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <label className="block text-xs font-semibold text-rpg-muted uppercase tracking-wider mb-1.5">
-                  Category / Attribute
+                  Category
                 </label>
                 <select
                   value={category}
                   onChange={(e) => setCategory(e.target.value)}
-                  className="w-full px-3 py-2.5 rounded-xl bg-[#111525] border border-rpg-border focus:border-rpg-purple focus:outline-none text-rpg-text text-sm"
+                  className="w-full px-3 py-2.5 rounded-xl bg-[#111525] border border-rpg-border focus:border-emerald-500 text-rpg-text text-sm"
                 >
-                  <option value="intellect">🧠 Intellect (Coding/Logic)</option>
-                  <option value="strength">⚔️ Strength (Gym/Workouts)</option>
-                  <option value="vitality">❤️ Vitality (Health/Cardio)</option>
-                  <option value="discipline">🎯 Discipline (Habits)</option>
-                  <option value="wisdom">📚 Wisdom (Reading/Study)</option>
+                  <option value="intellect">🧠 Intellect / Study</option>
+                  <option value="strength">⚔ Strength / Health</option>
+                  <option value="vitality">💚 Vitality / Fitness</option>
+                  <option value="discipline">✨ Discipline / Work</option>
+                  <option value="wisdom">📖 Wisdom / Reading</option>
                 </select>
               </div>
 
               <div>
                 <label className="block text-xs font-semibold text-rpg-muted uppercase tracking-wider mb-1.5">
-                  Difficulty Level
+                  Difficulty / Impact
                 </label>
                 <select
                   value={difficulty}
                   onChange={(e) => setDifficulty(e.target.value)}
-                  className="w-full px-3 py-2.5 rounded-xl bg-[#111525] border border-rpg-border focus:border-rpg-purple focus:outline-none text-rpg-text text-sm"
+                  className="w-full px-3 py-2.5 rounded-xl bg-[#111525] border border-rpg-border focus:border-emerald-500 text-rpg-text text-sm"
                 >
-                  <option value="easy">🟢 Easy (+50 XP)</option>
-                  <option value="medium">🔵 Medium (+100 XP)</option>
-                  <option value="hard">🟠 Hard (+175 XP)</option>
-                  <option value="epic">🔴 Epic (+300 XP)</option>
+                  <option value="easy">🌱 Easy (+50 XP, +10 Gold)</option>
+                  <option value="medium">🌿 Medium (+100 XP, +20 Gold)</option>
+                  <option value="hard">🌳 Hard (+175 XP, +35 Gold)</option>
+                  <option value="epic">👑 Epic (+300 XP, +60 Gold)</option>
                 </select>
               </div>
             </div>
@@ -133,12 +133,12 @@ const QuestModal = ({ isOpen, onClose, onSubmit, initialTask = null, isSubmittin
             {/* Live Reward Preview */}
             <div className="p-3.5 rounded-xl bg-[#111525] border border-rpg-border/60">
               <span className="text-[11px] font-semibold text-rpg-muted uppercase tracking-wider block mb-2">
-                Estimated Server Rewards
+                Estimated Life Tree Nourishment
               </span>
               <div className="flex items-center justify-between text-xs font-fantasy font-bold">
                 <span className="text-rpg-blue">+{currentRewards.xp} XP</span>
                 <span className="text-rpg-gold">+{currentRewards.gold} Gold 🪙</span>
-                <span className="text-rpg-purple">+{currentRewards.stat} {category.toUpperCase()}</span>
+                <span className="text-emerald-400">+{currentRewards.stat} {category.toUpperCase()}</span>
               </div>
             </div>
 
@@ -154,9 +154,9 @@ const QuestModal = ({ isOpen, onClose, onSubmit, initialTask = null, isSubmittin
               <button
                 type="submit"
                 disabled={isSubmitting || !title.trim()}
-                className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-rpg-purple to-indigo-600 hover:from-purple-600 hover:to-indigo-700 text-white font-fantasy font-bold text-xs shadow-glow-purple disabled:opacity-50 flex items-center gap-2"
+                className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-fantasy font-bold text-xs shadow-glow-gold disabled:opacity-50 flex items-center gap-2"
               >
-                {isSubmitting ? 'Forging Quest...' : initialTask ? 'Save Changes' : '⚔ Add Quest'}
+                {isSubmitting ? 'Sowing Seed...' : initialTask ? 'Save Changes' : '🌱 Sow Growth Seed'}
               </button>
             </div>
           </form>

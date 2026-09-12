@@ -5,7 +5,7 @@ const RARITY_STYLES = {
   Common: { border: 'border-slate-500/40', badge: 'bg-slate-500/20 text-slate-300' },
   Uncommon: { border: 'border-emerald-500/40', badge: 'bg-emerald-500/20 text-emerald-300' },
   Rare: { border: 'border-blue-500/40', badge: 'bg-blue-500/20 text-blue-300 shadow-glow-blue' },
-  Epic: { border: 'border-purple-500/40', badge: 'bg-purple-500/20 text-purple-300 shadow-glow-purple' },
+  Epic: { border: 'border-purple-500/40', badge: 'bg-purple-500/20 text-purple-300 shadow-glow-gold' },
   Legendary: { border: 'border-amber-500/50', badge: 'bg-amber-500/20 text-amber-300 glow-border-gold' }
 };
 
@@ -43,7 +43,7 @@ const RewardCard = ({ item, onBuy, userGold = 0, isBuying = false }) => {
         </div>
 
         {item.effect && (
-          <div className="my-2 p-1.5 rounded-lg bg-rpg-purple/10 border border-rpg-purple/20 text-center text-xs font-semibold text-rpg-purple">
+          <div className="my-2 p-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-center text-xs font-semibold text-emerald-500">
             ✨ {item.effect}
           </div>
         )}

@@ -36,26 +36,26 @@ const Character = () => {
     <div className="space-y-8 pb-12">
       {/* Header */}
       <div>
-        <span className="text-xs font-bold font-fantasy text-rpg-purple tracking-widest uppercase flex items-center gap-1">
-          <Shield className="w-4 h-4 text-rpg-purple" /> RPG CHARACTER SHEET
+        <span className="text-xs font-bold font-fantasy text-emerald-500 tracking-widest uppercase flex items-center gap-1">
+          <Shield className="w-4 h-4 text-emerald-500" /> NATURE GUARDIAN SHEET
         </span>
         <h1 className="font-fantasy font-extrabold text-2xl md:text-3xl text-rpg-text mt-1">
-          HERO PROFILE & ATTRIBUTES
+          GUARDIAN PROFILE & ATTRIBUTES
         </h1>
       </div>
 
-      {/* Hero Overview Header Banner */}
-      <div className="rpg-panel p-8 rounded-3xl border border-rpg-purple/40 relative overflow-hidden bg-gradient-to-br from-[#151A2D] via-[#111525] to-[#1a122e]">
+      {/* Guardian Overview Header Banner */}
+      <div className="rpg-panel p-8 rounded-3xl border border-emerald-500/40 relative overflow-hidden bg-gradient-to-br from-[#151A2D] via-[#111525] to-[#1a122e]">
         <div className="flex flex-col md:flex-row items-center gap-8">
           {/* Avatar frame */}
           <div className="relative">
-            <div className="w-32 h-32 rounded-3xl bg-gradient-to-tr from-rpg-purple via-rpg-blue to-amber-400 p-1 shadow-glow-purple">
+            <div className="w-32 h-32 rounded-3xl bg-gradient-to-tr from-emerald-500 via-rpg-blue to-amber-400 p-1 shadow-glow-gold">
               <div className="w-full h-full bg-[#090B14] rounded-2xl flex items-center justify-center text-6xl relative overflow-hidden">
                 <span>🧙</span>
-                <div className="absolute inset-0 bg-gradient-to-t from-rpg-purple/40 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-emerald-500/40 to-transparent"></div>
               </div>
             </div>
-            <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-rpg-purple text-white text-xs font-fantasy font-bold px-3 py-1 rounded-full border border-purple-300 shadow-lg whitespace-nowrap">
+            <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-emerald-500 text-white text-xs font-fantasy font-bold px-3 py-1 rounded-full border border-purple-300 shadow-lg whitespace-nowrap">
               Level {user?.level || 1}
             </div>
           </div>
@@ -67,7 +67,7 @@ const Character = () => {
                 <h2 className="font-fantasy font-extrabold text-3xl gold-text flex items-center justify-center md:justify-start gap-2">
                   {user?.name} <Sparkles className="w-5 h-5 text-rpg-gold animate-pulse" />
                 </h2>
-                <p className="text-sm font-semibold text-rpg-purple tracking-wider uppercase mt-0.5">
+                <p className="text-sm font-semibold text-emerald-500 tracking-wider uppercase mt-0.5">
                   {user?.title || 'Apprentice Wanderer'}
                 </p>
               </div>
@@ -88,8 +88,8 @@ const Character = () => {
                 <Flame className="w-4 h-4 text-orange-500" />
                 Current Streak: {user?.streak?.current || 0} Days
               </div>
-              <div className="px-3 py-1.5 rounded-xl bg-rpg-purple/10 border border-rpg-purple/30 text-rpg-purple font-bold font-fantasy flex items-center gap-1.5">
-                <Award className="w-4 h-4 text-rpg-purple" />
+              <div className="px-3 py-1.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-500 font-bold font-fantasy flex items-center gap-1.5">
+                <Award className="w-4 h-4 text-emerald-500" />
                 Longest Streak: {user?.streak?.longest || 0} Days
               </div>
             </div>
@@ -115,7 +115,7 @@ const Character = () => {
       {/* Transaction & Quest History Log */}
       <div>
         <h3 className="font-fantasy font-bold text-lg text-rpg-text mb-4 flex items-center gap-2">
-          <History className="w-5 h-5 text-rpg-purple" /> RECENT HERO CHRONICLES & AUDIT LOG
+          <History className="w-5 h-5 text-emerald-500" /> RECENT GUARDIAN CHRONICLES & AUDIT LOG
         </h3>
 
         {loading ? (
@@ -124,7 +124,7 @@ const Character = () => {
           <ErrorMessage message={error} />
         ) : transactions.length === 0 ? (
           <div className="rpg-panel p-6 rounded-2xl border border-rpg-border text-center text-xs text-rpg-muted">
-            No chronicle transactions recorded yet. Complete quests or purchase items to write your legend!
+            No chronicle transactions recorded yet. Complete growth seeds or purchase items to write your legend!
           </div>
         ) : (
           <div className="rpg-panel rounded-2xl border border-rpg-border overflow-hidden divide-y divide-rpg-border/60">

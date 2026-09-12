@@ -12,9 +12,9 @@ const QuestCompleteModal = ({ rewardData, onClose }) => {
           initial={{ opacity: 0, y: 30, scale: 0.95 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 20 }}
-          className="rpg-panel p-4 rounded-2xl border border-rpg-purple shadow-glow-purple bg-gradient-to-r from-[#151A2D] to-[#1a1733] pointer-events-auto flex items-center gap-4"
+          className="rpg-panel p-4 rounded-2xl border border-emerald-500 shadow-glow-gold bg-gradient-to-r from-[#151A2D] to-[#1a1733] pointer-events-auto flex items-center gap-4"
         >
-          <div className="w-12 h-12 rounded-xl bg-rpg-purple/20 border border-rpg-purple/50 flex items-center justify-center text-rpg-purple">
+          <div className="w-12 h-12 rounded-xl bg-emerald-500/20 border border-emerald-500/50 flex items-center justify-center text-emerald-500">
             <CheckCircle className="w-7 h-7 text-emerald-400" />
           </div>
 

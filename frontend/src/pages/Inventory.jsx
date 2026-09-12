@@ -22,7 +22,7 @@ const Inventory = () => {
       }
     } catch (err) {
       console.error('Failed to fetch inventory:', err);
-      setError(err.response?.data?.message || 'Failed to retrieve hero inventory contents.');
+      setError(err.response?.data?.message || 'Failed to retrieve sanctuary inventory contents.');
     } finally {
       setLoading(false);
     }
@@ -37,10 +37,12 @@ const Inventory = () => {
       setEquippingId(itemId);
       const res = await inventoryApi.equipItem(itemId);
       if (res.data.success) {
-        const updatedItem = res.data.data;
+        const { item: updatedItem, user: updatedUser } = res.data.data;
+        if (updatedUser) updateUser(updatedUser);
+        
         setItems(prev => prev.map(item => {
-          if (item._id === itemId) return updatedItem;
-          if (item.itemType === updatedItem.itemType && updatedItem.equipped) {
+          if (item._id === itemId) return updatedItem || item;
+          if (item.itemType === (updatedItem || item).itemType && (updatedItem || item).equipped) {
             return { ...item, equipped: false };
           }
           return item;
@@ -58,19 +60,19 @@ const Inventory = () => {
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <span className="text-xs font-bold font-fantasy text-rpg-purple tracking-widest uppercase flex items-center gap-1">
-            <Backpack className="w-4 h-4 text-rpg-purple" /> ARTIFACT STORAGE
+          <span className="text-xs font-bold font-fantasy text-emerald-500 tracking-widest uppercase flex items-center gap-1">
+            <Backpack className="w-4 h-4 text-emerald-500" /> SANCTUARY STORAGE
           </span>
           <h1 className="font-fantasy font-extrabold text-2xl md:text-3xl text-rpg-text mt-1">
-            HERO INVENTORY ({items.length})
+            NATURE INVENTORY ({items.length})
           </h1>
         </div>
 
         <Link
           to="/shop"
-          className="px-4 py-2.5 rounded-xl bg-rpg-purple/20 border border-rpg-purple/40 text-rpg-purple hover:bg-rpg-purple hover:text-white font-fantasy font-bold text-xs flex items-center justify-center gap-2 transition"
+          className="px-4 py-2.5 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-500 hover:bg-emerald-500 hover:text-white font-fantasy font-bold text-xs flex items-center justify-center gap-2 transition"
         >
-          <ShoppingBag className="w-4 h-4" /> Visit Adventurer Shop
+          <ShoppingBag className="w-4 h-4" /> Visit Nature Emporium
         </Link>
       </div>
 
@@ -86,13 +88,13 @@ const Inventory = () => {
             YOUR INVENTORY IS EMPTY
           </h3>
           <p className="text-xs text-rpg-muted mb-6 leading-relaxed">
-            You haven't acquired any equipment or artifacts yet. Earn Gold by completing quests and visit the Adventurer's Shop!
+            You haven't acquired any equipment or artifacts yet. Earn Gold by completing growth seeds and visit the Nature Emporium!
           </p>
           <Link
             to="/shop"
-            className="px-6 py-3 rounded-xl bg-gradient-to-r from-rpg-purple to-indigo-600 hover:from-purple-600 hover:to-indigo-700 text-white font-fantasy font-bold text-xs shadow-glow-purple inline-flex items-center gap-2"
+            className="px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white font-fantasy font-bold text-xs shadow-glow-gold inline-flex items-center gap-2"
           >
-            <ShoppingBag className="w-4 h-4" /> Go to Merchant Shop 🪙
+            <ShoppingBag className="w-4 h-4" /> Go to Nature Emporium 🪙
           </Link>
         </div>
       ) : (

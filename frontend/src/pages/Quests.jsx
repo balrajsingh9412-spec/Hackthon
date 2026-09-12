@@ -127,11 +127,11 @@ const Quests = () => {
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <span className="text-xs font-bold font-fantasy text-rpg-purple tracking-widest uppercase flex items-center gap-1">
-            <Swords className="w-4 h-4 text-rpg-purple" /> REALM QUEST LOG
+          <span className="text-xs font-bold font-fantasy text-emerald-500 tracking-widest uppercase flex items-center gap-1">
+            <Swords className="w-4 h-4 text-emerald-500" /> REALM GROWTH LOG
           </span>
           <h1 className="font-fantasy font-extrabold text-2xl md:text-3xl text-rpg-text mt-1">
-            QUEST BOARD
+            GROWTH BOARD
           </h1>
         </div>
 
@@ -140,9 +140,9 @@ const Quests = () => {
             setEditingTask(null);
             setIsModalOpen(true);
           }}
-          className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-rpg-purple to-indigo-600 hover:from-purple-600 hover:to-indigo-700 text-white font-fantasy font-bold text-xs shadow-glow-purple flex items-center justify-center gap-2 active:scale-95 transition"
+          className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white font-fantasy font-bold text-xs shadow-glow-gold flex items-center justify-center gap-2 active:scale-95 transition"
         >
-          <Plus className="w-4 h-4" /> FORGE NEW QUEST
+          <Plus className="w-4 h-4" /> SOW NEW SEED
         </button>
       </div>
 
@@ -155,8 +155,8 @@ const Quests = () => {
             type="text"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            placeholder="Search quest title or details..."
-            className="w-full pl-10 pr-4 py-2 rounded-xl bg-[#111525] border border-rpg-border focus:border-rpg-purple focus:outline-none text-rpg-text text-xs"
+            placeholder="Search seed title or details..."
+            className="w-full pl-10 pr-4 py-2 rounded-xl bg-[#111525] border border-rpg-border focus:border-emerald-500 focus:outline-none text-rpg-text text-xs"
           />
         </div>
 
@@ -166,19 +166,19 @@ const Quests = () => {
           <div className="flex bg-[#111525] p-1 rounded-xl border border-rpg-border text-xs font-semibold">
             <button
               onClick={() => setStatusFilter('active')}
-              className={`px-3 py-1 rounded-lg transition ${statusFilter === 'active' ? 'bg-rpg-purple text-white font-bold' : 'text-rpg-muted hover:text-white'}`}
+              className={`px-3 py-1 rounded-lg transition ${statusFilter === 'active' ? 'bg-emerald-500 text-white font-bold' : 'text-rpg-muted hover:text-white'}`}
             >
               Active
             </button>
             <button
               onClick={() => setStatusFilter('completed')}
-              className={`px-3 py-1 rounded-lg transition ${statusFilter === 'completed' ? 'bg-rpg-purple text-white font-bold' : 'text-rpg-muted hover:text-white'}`}
+              className={`px-3 py-1 rounded-lg transition ${statusFilter === 'completed' ? 'bg-emerald-500 text-white font-bold' : 'text-rpg-muted hover:text-white'}`}
             >
               Completed
             </button>
             <button
               onClick={() => setStatusFilter('all')}
-              className={`px-3 py-1 rounded-lg transition ${statusFilter === 'all' ? 'bg-rpg-purple text-white font-bold' : 'text-rpg-muted hover:text-white'}`}
+              className={`px-3 py-1 rounded-lg transition ${statusFilter === 'all' ? 'bg-emerald-500 text-white font-bold' : 'text-rpg-muted hover:text-white'}`}
             >
               All
             </button>
@@ -222,19 +222,19 @@ const Quests = () => {
         <div className="rpg-panel p-10 rounded-2xl border border-rpg-border text-center">
           <div className="text-4xl mb-3">📜</div>
           <h3 className="font-fantasy font-bold text-lg text-rpg-text mb-1">
-            No Matching Quests Found
+            No Matching Seeds Found
           </h3>
           <p className="text-xs text-rpg-muted max-w-sm mx-auto mb-4">
-            Try adjusting your search terms or filter criteria, or forge a new quest!
+            Try adjusting your search terms or filter criteria, or sow a new seed!
           </p>
           <button
             onClick={() => {
               setEditingTask(null);
               setIsModalOpen(true);
             }}
-            className="px-4 py-2 rounded-xl bg-rpg-purple/20 border border-rpg-purple/40 text-rpg-purple font-fantasy font-bold text-xs hover:bg-rpg-purple hover:text-white transition"
+            className="px-4 py-2 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-500 font-fantasy font-bold text-xs hover:bg-emerald-500 hover:text-white transition"
           >
-            + Forge New Quest
+            + Sow New Seed
           </button>
         </div>
       ) : (
@@ -255,7 +255,7 @@ const Quests = () => {
         </div>
       )}
 
-      {/* Quest Forge/Edit Modal */}
+      {/* Seed Forge/Edit Modal */}
       <QuestModal
         isOpen={isModalOpen}
         onClose={() => {

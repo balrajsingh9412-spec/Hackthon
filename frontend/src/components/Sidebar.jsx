@@ -1,14 +1,14 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Compass, Swords, Shield, ShoppingBag, Backpack, User, X } from 'lucide-react';
+import { Compass, Sprout, Heart, ShoppingBag, Backpack, User, X, Trees } from 'lucide-react';
 
 const NAV_ITEMS = [
-  { path: '/dashboard', label: 'Adventure Hub', icon: Compass },
-  { path: '/quests', label: 'Quest Board', icon: Swords },
-  { path: '/character', label: 'Hero Sheet', icon: Shield },
-  { path: '/shop', label: 'Adventurer Shop', icon: ShoppingBag },
-  { path: '/inventory', label: 'Inventory', icon: Backpack },
-  { path: '/profile', label: 'Hero Profile', icon: User }
+  { path: '/dashboard', label: 'Nature Haven', icon: Trees },
+  { path: '/quests', label: 'Growth Board', icon: Heart },
+  { path: '/character', label: 'Life Sanctuary', icon: Compass },
+  { path: '/shop', label: 'Nature Emporium', icon: ShoppingBag },
+  { path: '/inventory', label: 'Inventory Storage', icon: Backpack },
+  { path: '/profile', label: 'Guardian Profile', icon: User }
 ];
 
 const Sidebar = ({ isMobileOpen, onCloseMobile }) => {
@@ -29,12 +29,12 @@ const Sidebar = ({ isMobileOpen, onCloseMobile }) => {
                 className={({ isActive }) =>
                   `flex items-center gap-3 px-3.5 py-3 rounded-xl font-fantasy font-semibold text-sm transition-all duration-200 ${
                     isActive
-                      ? 'bg-gradient-to-r from-rpg-purple/30 to-indigo-900/30 text-white border border-rpg-purple/50 shadow-glow-purple'
+                      ? 'bg-gradient-to-r from-emerald-900/40 to-teal-900/30 text-white border border-emerald-500/50 shadow-glow-gold'
                       : 'text-rpg-muted hover:text-white hover:bg-[#151A2D]'
                   }`
                 }
               >
-                <Icon className="w-5 h-5 text-rpg-purple" />
+                <Icon className="w-5 h-5 text-emerald-400" />
                 <span>{item.label}</span>
               </NavLink>
             );
@@ -43,8 +43,8 @@ const Sidebar = ({ isMobileOpen, onCloseMobile }) => {
 
         {/* Footer info box */}
         <div className="p-3.5 rounded-xl bg-[#111525] border border-rpg-border text-xs text-center text-rpg-muted">
-          <p className="font-fantasy text-rpg-gold font-bold">LIFEQUEST v1.0</p>
-          <p className="text-[10px] mt-0.5 opacity-75">Dark Fantasy RPG Suite</p>
+          <p className="font-fantasy text-emerald-400 font-bold">LIFEQUEST RPG</p>
+          <p className="text-[10px] mt-0.5 opacity-75">Peaceful Life Tree RPG World</p>
         </div>
       </aside>
 
@@ -71,7 +71,7 @@ const Sidebar = ({ isMobileOpen, onCloseMobile }) => {
                     className={({ isActive }) =>
                       `flex items-center gap-3 px-4 py-3 rounded-xl font-fantasy font-semibold text-sm transition-all ${
                         isActive
-                          ? 'bg-rpg-purple text-white shadow-glow-purple'
+                          ? 'bg-emerald-500 text-white shadow-glow-gold'
                           : 'text-rpg-muted hover:text-white hover:bg-[#151A2D]'
                       }`
                     }
@@ -96,7 +96,7 @@ const Sidebar = ({ isMobileOpen, onCloseMobile }) => {
               to={item.path}
               className={({ isActive }) =>
                 `flex flex-col items-center gap-1 p-1 text-[10px] font-fantasy font-semibold transition ${
-                  isActive ? 'text-rpg-purple font-bold' : 'text-rpg-muted hover:text-white'
+                  isActive ? 'text-emerald-500 font-bold' : 'text-rpg-muted hover:text-white'
                 }`
               }
             >
