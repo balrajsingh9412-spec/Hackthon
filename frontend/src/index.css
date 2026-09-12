@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #090B14;
+    color: #F8FAFC;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .font-fantasy {
+    font-family: 'Cinzel', serif;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #090B14;
+}
+::-webkit-scrollbar-thumb {
+  background: #29304A;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #7C3AED;
+}
+
+/* Glassmorphism & RPG Panels */
+.rpg-panel {
+  background: rgba(21, 26, 45, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid #29304A;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6);
+}
+
+.rpg-panel-hover {
+  transition: all 0.25s ease-in-out;
+}
+.rpg-panel-hover:hover {
+  background: rgba(28, 35, 64, 0.95);
+  border-color: rgba(124, 58, 237, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 35px -10px rgba(124, 58, 237, 0.25);
+}
+
+/* Metallic & Gold Gradient Accent */
+.gold-text {
+  background: linear-gradient(135deg, #FFE259 0%, #FFA751 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.purple-text {
+  background: linear-gradient(135deg, #C084FC 0%, #7C3AED 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Glowing Borders */
+.glow-border-gold {
+  border: 1px solid rgba(245, 185, 66, 0.5);
+  box-shadow: 0 0 15px rgba(245, 185, 66, 0.25);
+}
+
+.glow-border-purple {
+  border: 1px solid rgba(124, 58, 237, 0.5);
+  box-shadow: 0 0 15px rgba(124, 58, 237, 0.3);
+}
+
+/* Animated Progress Bars */
+@keyframes xp-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.xp-bar-fill {
+  background: linear-gradient(90deg, #3B82F6 0%, #8B5CF6 50%, #3B82F6 100%);
+  background-size: 200% 100%;
+  animation: xp-shimmer 3s infinite linear;
+}
+
+/* Pulse animation for active streak */
+@keyframes flame-pulse {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 8px rgba(249, 115, 22, 0.6)); }
+  50% { transform: scale(1.1); filter: drop-shadow(0 0 16px rgba(249, 115, 22, 0.9)); }
+}
+
+.flame-anim {
+  animation: flame-pulse 2s infinite ease-in-out;
+}
+
+/* Skeleton Loading Shimmer */
+@keyframes skeleton-loading {
+  0% { background-color: rgba(41, 48, 74, 0.4); }
+  50% { background-color: rgba(41, 48, 74, 0.8); }
+  100% { background-color: rgba(41, 48, 74, 0.4); }
+}
+
+.skeleton-shimmer {
+  animation: skeleton-loading 1.5s infinite ease-in-out;
+}
