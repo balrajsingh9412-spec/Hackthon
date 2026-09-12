@@ -1,20 +1,15 @@
 const connectDB = require('./config/db');
-const mongoose = require('mongoose');
-const http = require('http');
 
 async function runTests() {
   console.log('🚀 Starting LifeQuest RPG Backend E2E Test Suite...');
 
-  // Connect to DB
-  await connectDB();
-  const app = require('./server');
+  // Start app (server.js connects DB and listens on port 5000)
+  require('./server');
 
-  // Listen on test port 5002
-  const server = http.createServer(app);
-  await new Promise((resolve) => server.listen(5002, resolve));
-  console.log('✅ Test server listening on http://localhost:5002');
+  // Wait for Mongoose & Express server to be ready
+  await new Promise((resolve) => setTimeout(resolve, 2000));
 
-  const baseURL = 'http://localhost:5002/api';
+  const baseURL = 'http://localhost:5000/api';
 
   async function apiRequest(path, options = {}) {
     const res = await fetch(`${baseURL}${path}`, {
@@ -42,7 +37,6 @@ async function runTests() {
     });
     console.log('2. User A Registration:', regA.status === 201 && regA.data.data.token ? 'PASSED' : 'FAILED');
     const tokenA = regA.data.data.token;
-    const userAId = regA.data.data.user._id;
 
     // 3. Register User B
     const userBEmail = `hero_b_${Date.now()}@test.com`;
@@ -53,7 +47,7 @@ async function runTests() {
     console.log('3. User B Registration:', regB.status === 201 && regB.data.data.token ? 'PASSED' : 'FAILED');
     const tokenB = regB.data.data.token;
 
-    // 4. User A Creates Quest A
+    // 4. User A Creates Quest A (Epic)
     const questA = await apiRequest('/tasks', {
       method: 'POST',
       token: tokenA,
@@ -79,15 +73,14 @@ async function runTests() {
       completeA.data.data.streak.current === 1 ? 'PASSED' : 'FAILED'
     );
 
-    // 6. User A Shop Item Purchase (Crown of Monarchs)
+    // 6. User A Shop Item Purchase (Crown of Monarchs - 1000 Gold, User has 160)
     const buyCrown = await apiRequest('/shop/golden_crown/buy', {
       method: 'POST',
       token: tokenA
     });
-    // User starts with 100 + 60 (epic quest) = 160 Gold. Crown costs 1000 Gold, so should fail with 400!
     console.log('6. Gold Insufficiency Validation:', buyCrown.status === 400 ? 'PASSED' : 'FAILED');
 
-    // User A buys Elixir of Wisdom (150 Gold)
+    // 7. User A buys Elixir of Wisdom (150 Gold)
     const buyElixir = await apiRequest('/shop/elixir_wisdom/buy', {
       method: 'POST',
       token: tokenA
@@ -98,7 +91,7 @@ async function runTests() {
     const invA = await apiRequest('/inventory', { token: tokenA });
     console.log('8. User A Inventory Fetch:', invA.status === 200 && invA.data.data.length === 1 ? 'PASSED' : 'FAILED');
 
-    // 9. User B Data Isolation Test (User B trying to complete or fetch User A's quest)
+    // 9. User B Data Isolation Test (User B trying to fetch User A's quest)
     const illegalAccess = await apiRequest(`/tasks/${questAId}`, { token: tokenB });
     console.log('9. Multi-Tenant User Isolation:', illegalAccess.status === 404 ? 'PASSED' : 'FAILED');
 
@@ -106,8 +99,6 @@ async function runTests() {
   } catch (err) {
     console.error('❌ E2E Test Error:', err);
   } finally {
-    server.close();
-    await mongoose.disconnect();
     process.exit(0);
   }
 }
