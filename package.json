@@ -1,0 +1,16 @@
+{
+  "name": "lifequest-rpg",
+  "version": "1.0.0",
+  "description": "Turn Your Real Life Into An Adventure - Dark Fantasy RPG Gamified Productivity App",
+  "main": "backend/server.js",
+  "scripts": {
+    "setup": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "start": "concurrently \"npm run backend\" \"npm run frontend\"",
+    "backend": "cd backend && npm start",
+    "frontend": "cd frontend && npm run dev",
+    "build": "cd frontend && npm run build"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
