@@ -10,7 +10,7 @@ services:
       - key: PORT
         value: 5000
       - key: MONGO_URI
-        sync: false
+        value: mongodb+srv://balrajsinghcoc_db_user:rC1ZsCXHDMRwSU3p@cluster0.pz5nwgq.mongodb.net/lifequest
       - key: JWT_SECRET
         sync: false
       - key: NODE_ENV
