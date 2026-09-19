@@ -10,6 +10,8 @@ dotenv.config();
 
 const app = express();
 
+app.set('trust proxy', 1);
+
 // Security Headers Middleware
 app.use(helmet({
   contentSecurityPolicy: false // Disabled for dev flexibility, headers enabled
